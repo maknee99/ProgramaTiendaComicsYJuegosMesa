@@ -1,0 +1,109 @@
+/**
+ *
+ * @author Maknee
+ */
+public class Factura {
+    private int idFactura;
+    private int maxProductos = 10;
+    private Producto[] productosComprados;
+    private int numProductos;
+
+    public Factura() {
+        this.idFactura = 0;
+        this.productosComprados = new Producto[maxProductos];
+        this.numProductos = 0;
+    }
+
+    public Factura(int idFactura, Producto[] productosComprados, int numProductos) {
+        this.idFactura = idFactura;
+        this.productosComprados = productosComprados;
+        this.numProductos = numProductos;
+    }
+    
+    public boolean addProducto(Producto producto) {
+        boolean encontrado = false;
+        boolean aniadido = false;
+        if (numProductos < maxProductos){
+            for(int i = 0; i < this.numProductos; i++){
+                if (this.productosComprados[i].getNombre() == producto.getNombre() && this.productosComprados[i].getClass() == producto.getClass()){
+                    encontrado = true;
+                }
+            }
+            if (!encontrado){
+                productosComprados[numProductos] = producto;
+                aniadido = true;
+                numProductos++;
+            }
+        }
+        return aniadido;
+    }
+
+    public double calcularCosteComics(){
+        double coste = 0;
+        for(int i = 0; i < this.numProductos; i++){
+            if (this.productosComprados[i] instanceof Comic){
+                coste += this.productosComprados[i].calcularPrecio();
+            }
+        }
+        return coste;
+    }
+
+    public double calcularCosteJuegos(){
+        double coste = 0;
+        for(int i = 0; i < this.numProductos; i++){
+            if (this.productosComprados[i] instanceof JuegoMesa){
+                coste += this.productosComprados[i].calcularPrecio();
+            }
+        }
+        return coste;
+    }
+
+    public double calcularCosteTotal(){
+        double coste = 0;
+        for(int i = 0; i < this.numProductos; i++){
+            coste += this.productosComprados[i].calcularPrecio();
+        }
+        return coste;
+    }
+
+    public int getIdFactura() {
+        return this.idFactura;
+    }
+
+    public void setIdFactura(int idFactura) {
+        this.idFactura = idFactura;
+    }
+
+    public Producto[] getProductosComprados() {
+        return this.productosComprados;
+    }
+
+    public void setProductosComprados(Producto[] productosComprados) {
+        this.productosComprados = productosComprados;
+    }
+
+    public int getNumProductos() {
+        return this.numProductos;
+    }
+
+    public void setNumProductos(int numProductos) {
+        this.numProductos = numProductos;
+    }
+    
+    
+    public void muestraProductos() {
+        String texto = "";
+        for(int i = 0; i < this.numProductos; i++){
+            texto = "Nombre: " + this.productosComprados[i].getNombre() + " Precio: " + String.valueOf(this.productosComprados[i].calcularPrecio());
+            System.out.println(texto);
+        }
+    }
+    @Override
+    public String toString() {
+        String texto = "";
+        for(int i = 0; i < this.numProductos; i++){
+            texto = "Nombre: " + this.productosComprados[i].getNombre() + " Precio: " + String.valueOf(this.productosComprados[i].calcularPrecio());
+        }
+        return texto;     
+    }
+}
