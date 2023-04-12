@@ -1,0 +1,52 @@
+/**
+ *
+ * @author Maknee
+ */
+public class MaterialJuego {
+    private String nombre_material;
+    private int num_elementos;
+    private double coste;
+    
+    public MaterialJuego() {
+        this.nombre_material = "";
+        this.num_elementos = 0;
+        this.coste = 0;
+    }
+    
+    public MaterialJuego(String nombre_material, int num_elementos, double coste) {
+        this.nombre_material = nombre_material;
+        this.num_elementos = num_elementos;
+        this.coste = coste;
+    }
+    
+    public String getNombreMaterial() {
+        return this.nombre_material;
+    }
+
+    public void setNombreMaterial(String nombre_material) {
+        this.nombre_material = nombre_material;
+    }
+    
+    public int getNumElementos() {
+        return this.num_elementos;
+    }
+
+    public void setNombreMaterial(int num_elementos) {
+        this.num_elementos = num_elementos;
+    }
+    
+    public double getCoste() {
+        return this.coste;
+    }
+
+    public void setCoste(double coste) {
+        this.coste = coste;
+    }
+    @Override
+    public String toString() {
+        String texto = "";
+        texto = "Nombre: " + this.getNombreMaterial() + " Precio: " + String.valueOf(this.getCoste());
+        return texto;     
+    }
+    
+}
