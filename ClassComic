@@ -1,0 +1,63 @@
+class Comic extends Producto {
+    private String tematica;
+    private String autor;
+    private int numPaginas;
+
+    public Comic() {
+        super();
+        this.tematica = "";
+        this.autor = "";
+        this.numPaginas = 0;
+    }
+
+    public Comic(String nombre, int añoEdicion, double precioBase, int calificacionEdades,
+                 String tematica, String autor, int numPaginas) {
+        super(nombre, añoEdicion, precioBase, calificacionEdades);
+        this.tematica = tematica;
+        this.autor = autor;
+        this.numPaginas = numPaginas;
+    }
+
+    public String getTematica() {
+        return this.tematica;
+    }
+
+    public void setTematica(String tematica) {
+        this.tematica = tematica;
+    }
+
+    public String getAutor() {
+        return this.autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public int getNumPaginas() {
+        return this.numPaginas;
+    }
+
+    public void setNumPaginas(int numPaginas) {
+        this.numPaginas = numPaginas;
+    }
+
+    @Override
+    public double calcularPrecio() {
+        double precio = getPrecioBase();
+        if (getAñoEdicion() >= 2022) {
+            precio += 3;
+        }
+        if (getNumPaginas() > 250) {
+            precio *= 1.15;
+        } else if (getNumPaginas() > 100) {
+            precio *= 1.1;
+        }
+        return precio;
+    }
+
+    @Override
+    public String toString() {
+        return "Comic: " + getNombre() + ", Autor: " + getAutor() + ", Páginas: " + getNumPaginas() + ", Precio: " + calcularPrecio() + " euros";
+    }
+}
