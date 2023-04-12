@@ -1,0 +1,54 @@
+abstract class Producto {
+    private String nombre;
+    private int añoEdicion;
+    private double precioBase;
+    private int calificacionEdades;
+
+    public Producto() {
+        this.nombre = "";
+        this.añoEdicion = 0;
+        this.precioBase = 0;
+        this.calificacionEdades = 0;
+    }
+
+    public Producto(String nombre, int añoEdicion, double precioBase, int calificacionEdades) {
+        this.nombre = nombre;
+        this.añoEdicion = añoEdicion;
+        this.precioBase = precioBase;
+        this.calificacionEdades = calificacionEdades;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getAñoEdicion() {
+        return this.añoEdicion;
+    }
+
+    public void setAñoEdicion(int añoEdicion) {
+        this.añoEdicion = añoEdicion;
+    }
+
+    public double getPrecioBase() {
+        return this.precioBase;
+    }
+
+    public void setPrecioBase(double precioBase) {
+        this.precioBase = precioBase;
+    }
+
+    public int getCalificacionEdades() {
+        return this.calificacionEdades;
+    }
+
+    public void setCalificacionEdades(int calificacionEdades) {
+        this.calificacionEdades = calificacionEdades;
+    }
+
+    public abstract double calcularPrecio();
+}
