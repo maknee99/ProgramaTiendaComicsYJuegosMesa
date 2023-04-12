@@ -1,0 +1,21 @@
+/**
+ *
+ * @author Maknee
+ */
+public class ProgramaPrincipal {
+    public static void main(String[] args) {
+        Factura mi_factura = new Factura();
+        
+        Comic comic_spiderman = new Comic("Comic amazing spiderman", 1987, 27.0, 18,"accion","Lee", 300);
+        Comic comic_watchmen = new Comic("Watchmen", 2022, 31.0, 18,"accion","Lee", 100);
+        JuegoMesa juegomesa_parchis = new JuegoMesa("Comic amazing spiderman", 1987, 27.0, 4, "dados", 4, 5);
+        JuegoMesa juegomesa_cartas = new JuegoMesa("Watchmen", 2022, 31.0, 4, "cartas", 40, 1);
+        
+        mi_factura.addProducto(comic_spiderman);
+        mi_factura.addProducto(comic_watchmen);
+        mi_factura.addProducto(juegomesa_parchis);
+        mi_factura.addProducto(juegomesa_cartas);
+        
+        mi_factura.muestraProductos();
+    }
+}
