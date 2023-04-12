@@ -1,0 +1,37 @@
+class JuegoMesa extends Producto {
+    private MaterialJuego material_juego;
+    
+    public JuegoMesa() {
+        super();
+        this.material_juego = new MaterialJuego();
+    }
+    
+    public JuegoMesa(String nombre, int añoEdicion, double precioBase, int calificacionEdades,
+                     String nombre_material, int num_elementos, double coste) {
+        super(nombre, añoEdicion, precioBase, calificacionEdades);
+        this.material_juego = new MaterialJuego(nombre_material, num_elementos, coste);
+        
+    }
+    
+    public MaterialJuego getMaterialJuego() {
+        return this.material_juego;
+    }
+
+    public void setMaterialJuego(MaterialJuego coste) {
+        this.material_juego = coste;
+    }
+    
+    @Override
+    public double calcularPrecio() {
+        double precio = getPrecioBase();
+        precio += this.material_juego.getNumElementos() * this.material_juego.getCoste();
+        return precio;
+    }
+    @Override
+    public String toString() {
+        String texto = "";
+        texto = "Nombre: " + this.getNombre() + " Precio: " + String.valueOf(this.calcularPrecio());
+        return texto;     
+    }
+    
+}
